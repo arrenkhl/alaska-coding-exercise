@@ -15,11 +15,6 @@ These programs were made for Alaska Airline's Internship Coding Exercise
 - Triple fives [5,5,5] (500)
 - Triple sixes [6,6,6] (600)
 
-## Questions
-
-## Assumptions Made
-1. 
-
 ## Possible Paths/Solutions
 ### Solution 1: Brute Force (C)
 - In order to first approach the exercise, I tried using a brute-force method by going through the array of dice rolls with two loops
@@ -27,4 +22,10 @@ These programs were made for Alaska Airline's Internship Coding Exercise
 - On top of this, the brute-force method was inefficient with a run-time efficiency of O(n^2)
 - I decided to scrap this approach and move on to a different one!
 ### Solution 2: Counting Occurrences (C)
-- 
+
+
+## Questions
+
+## Assumptions Made
+1. 
+
