@@ -1,7 +1,8 @@
 # Coding Exercise: Greed Kata
 These programs were made for Alaska Airline's Internship Coding Exercise
 
-[Color palette for my reference](https://colorhunt.co/palette/272788)
+- [Demo the exercise](https://webpages.scu.edu/ftp/alaska-coding-exercise/)
+- [Color palette](https://colorhunt.co/palette/272788)
 
 ## Instructions
 [Greed](http://brendan.enrick.com/file.axd?file=2014%2F1%2Fgreed%20kata.pdf) is a press-your-luck dice rolling game. In the game, the roller will be rolling dice trying to earn as many points as possible. For the purposes of this kata, we will just be scoring a single roll of five dice.
