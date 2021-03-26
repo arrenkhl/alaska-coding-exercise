@@ -17,6 +17,7 @@ These programs were made for Alaska Airline's Internship Coding Exercise
 - Triple sixes [6,6,6] (600)
 
 ## Possible Paths/Solutions
+
 ### Solution 1: Brute Force
 - In order to first approach the exercise, I tried using a brute-force method by going through the array of dice rolls with two loops
 - After some trial-and-error, I found that it was difficult to keep track of triple cases and accomodate for cases when there would be a quadruple occurrence (my code would add the triple score twice)
@@ -29,6 +30,7 @@ These programs were made for Alaska Airline's Internship Coding Exercise
 F(n) = max{F(n-j) + Sj}, Sj = score for jth roll 1-6
 ```
 - I struggled to find a recurrence relation that would account for the triple cases, and the implementation would most likely be inefficient, as well, so I also scrapped this approach
+
 ### Solution 3: Counting Occurrences
 - A little bit of thinking later, I realized that the triple cases could easily be accounted for if I just counted the amount of times a number is rolled!
 - In order to do this, I used structs for each die face, assigning a value 1-6 and a count integer to count the number of times the die number is rolled
@@ -70,9 +72,13 @@ score += die[4].count * 50;  // single five = 50 pts
 ```
 - This gives a run-time efficiency of O(6), and so I decided to keep this solution and move on to creating an interface
 
+### Implementing solution in JavaScript
+- 
+
 ## Questions
 1. Is there a way to solve this problem dynamically? Would this be a good idea in the first place?
 2. Can the problem be solved in a faster time than O(6)?
+3. Are there shortcuts that can be made in my JavaScript implementation?
 
 ## Assumptions Made
 - Each face of the die has an equal chance of being rolled
