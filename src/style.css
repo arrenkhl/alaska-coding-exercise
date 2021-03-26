@@ -13,6 +13,7 @@ p {
    color: #54585c;
 }
 
+/* ------Highlights my name when hovered------ */
 .linkedin {
    cursor: pointer;
    transition: .25s;
@@ -21,6 +22,7 @@ p {
 .linkedin:hover {
    color: #95dbd3;
 }
+/* ------------------------------------------- */
 
 .top {
    padding-top: 15px;
@@ -69,6 +71,7 @@ p {
    background-color: #95dbd3;
 }
 
+/* ------Uses grid display for the dice------ */
 .container {
    margin-top: 20px;
    display: grid;
@@ -79,6 +82,7 @@ p {
 .container img {
    width: 65%;
 }
+/* ------------------------------------------ */
 
 .score-calculator {
    text-align: center;

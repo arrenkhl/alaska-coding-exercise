@@ -64,6 +64,7 @@ function rollDice()
             else {
                 score += dice[i].value * 100;
             }
+            // add triple score to the score calculation text
             document.getElementById("score-calculator").innerHTML = score;
             scoreFlag++; // flag to indicate score calculated
         }
@@ -72,7 +73,7 @@ function rollDice()
     // single 1's (100pts)
     while (dice[0].count > 0) {
         score += 100;
-        // add "+" with score if score was calculated, else only add score
+        // add "+" if score was calculated, else only add score
         if (scoreFlag > 0) {
             document.getElementById("score-calculator").innerHTML += " + 100";
         }
@@ -86,7 +87,7 @@ function rollDice()
     // single 5's (50pts)
     while (dice[4].count > 0) {
         score += 50;
-        // add "+" with score if score was calculated, else only add score
+        // add "+" if score was calculated, else only add score
         if (scoreFlag > 0) {
             document.getElementById("score-calculator").innerHTML += " + 50";
         }
@@ -108,6 +109,8 @@ function rollDice()
     // updates the high score when applicable
     if (score > highScore) {
         highScore = score;
+        $('.blink').fadeOut(200); // blinks the new high score
+        $('.blink').fadeIn(200);
         document.getElementById("highscore-value").innerHTML = highScore;
     }
 
@@ -116,5 +119,3 @@ function rollDice()
         dice[i].count = 0;
     }
 }
-
-
