@@ -7,6 +7,8 @@ These programs were made for Alaska Airline's Internship Coding Exercise
 ## Instructions
 [Greed](http://brendan.enrick.com/file.axd?file=2014%2F1%2Fgreed%20kata.pdf) is a press-your-luck dice rolling game. In the game, the roller will be rolling dice trying to earn as many points as possible. For the purposes of this kata, we will just be scoring a single roll of five dice.
 
+Write code which will calculate the best score based on any given roll using following set of scoring rules:
+
 - A single one (100)
 - A single five (50)
 - Triple ones [1,1,1] (1000)
