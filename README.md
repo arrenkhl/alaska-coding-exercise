@@ -71,7 +71,11 @@ score += die[4].count * 50;  // single five = 50 pts
 
 ## Questions
 1. Is there a way to solve this problem dynamically? Would this be a good idea in the first place?
+2. Can the problem be solved faster than O(6)?
+3. 
 
 ## Assumptions Made
-
+- Each face of the die has an equal chance of being rolled
+- The highscore resets once the user refreshes the page
+- There is only one player per game
 
