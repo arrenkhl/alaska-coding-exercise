@@ -15,7 +15,7 @@ Please feel free to follow this usage:
 #include <stdlib.h>
 #include <time.h>
 
-#define N 6 // number of rolls = 5
+#define N 5 // number of rolls = 5
 
 struct dice {
     int value; // die's value (1-6)
