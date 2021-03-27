@@ -75,7 +75,50 @@ score += die[4].count * 50;  // single five = 50 pts
 - This gives a run-time efficiency of O(6), and so I decided to keep this solution and move on to creating an interface
 
 ### Implementing solution in JavaScript
-- 
+- When implementing my code into JavaScript, there were some changes to the logic that needed to be made
+- First, to initialize the array of dice, I used an array of objects:
+```js
+var dice = [];
+
+for (let i = 0; i < 6; i++) {
+    // initializing the dice array with die objects 1-6
+    let die = {
+        value: i + 1,
+        count: 0
+    }
+    dice.push(die);
+}
+```
+- When randomly generating the five dice rolls, I needed to update the dice to their respective images on the webpage and the numbers below them:
+```js
+// generate five dice rolls randomly
+for (let i = 0; i < 5; i++) {
+    /*
+    For each roll, this loop will generate a random number 1-6 and update
+    the picture and number correponding to each die.
+    */
+    roll[i] = Math.floor(Math.random() * 6) + 1;
+    document.getElementById("die"+i).src = "assets/die" + roll[i] + ".png";
+    document.getElementById("p"+i).innerHTML = roll[i];
+}
+```
+- For the most part, the rest of the logic was similar to that in C. There was some additional code to add to the usability of the site, such as a highscore display that blinks upon updating and a score calculator to show users the math behind their score. In order to do this, the way that single 1's and 5's were calculated changed slightly:
+```js
+// single 1's (100pts)
+while (dice[0].count > 0) {
+    score += 100;
+    // add "+" if score was calculated, else only add score
+    if (scoreFlag > 0) {
+        document.getElementById("score-calculator").innerHTML += " + 100";
+    }
+    else {
+        document.getElementById("score-calculator").innerHTML += "100";
+        scoreFlag++; // flag to indicate score calculated
+    }
+    dice[0].count--;
+}
+```
+
 
 ## Questions
 1. Is there a way to solve this problem dynamically? Would this be a good idea in the first place?
