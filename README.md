@@ -2,7 +2,7 @@
 These programs were made for Alaska Airline's Internship Coding Exercise
 
 - [Demo the exercise](https://webpages.scu.edu/ftp/alaska-coding-exercise/)
-- [Color palette](https://colorhunt.co/palette/272788)
+- [Demo the exercise with two players](https://webpages.scu.edu/ftp/alaska-coding-exercise-v2/)
 
 ## Instructions
 [Greed](http://brendan.enrick.com/file.axd?file=2014%2F1%2Fgreed%20kata.pdf) is a press-your-luck dice rolling game. In the game, the roller will be rolling dice trying to earn as many points as possible. For the purposes of this kata, we will just be scoring a single roll of five dice.
@@ -17,6 +17,11 @@ Write code which will calculate the best score based on any given roll using fol
 - Triple fours [4,4,4] (400)
 - Triple fives [5,5,5] (500)
 - Triple sixes [6,6,6] (600)
+
+## Assumptions Made
+- Each face of the die has an equal chance of being rolled
+- There are two players per game
+- The first player to 1000 points wins
 
 ## Possible Paths/Solutions
 
@@ -75,8 +80,8 @@ score += die[4].count * 50;  // single five = 50 pts
 - This gives a run-time efficiency of O(6), and so I decided to keep this solution and move on to creating an interface
 
 ### Implementing solution in JavaScript
-- When implementing my code into JavaScript, there were some changes to the logic that needed to be made
-- First, to initialize the array of dice, I used an array of objects:
+- When implementing my code into JavaScript, there were some changes to the logic that needed to be made in order to accommodate for two players and display changes on the webpage
+- First, to initialize the array of dice, I used an array of die objects, similar to the structs used in C:
 ```js
 var dice = [];
 
@@ -98,35 +103,36 @@ for (let i = 0; i < 5; i++) {
     the picture and number correponding to each die.
     */
     roll[i] = Math.floor(Math.random() * 6) + 1;
-    document.getElementById("die"+i).src = "assets/die" + roll[i] + ".png";
-    document.getElementById("p"+i).innerHTML = roll[i];
+    byId("die"+i).src = "assets/die" + roll[i] + ".png";
+    byId("p"+i).innerHTML = roll[i];
 }
 ```
-- For the most part, the rest of the logic was similar to that in C. There was some additional code to add to the usability of the site, such as a highscore display that blinks upon updating and a score calculator to show users the math behind their score. In order to do this, the way that single 1's and 5's were calculated changed slightly:
+- For the most part, the rest of the logic was similar to that in C. There was some additional code to add to the usability of the site, such as:
+  - A score display to show each player's respective score
+  - A "play again" button when a player wins
+  - Color changes when players switch turns
+  - A score calculator to show users the specific scores in their total
+- In order to do this, the way that single 1's and 5's were calculated changed slightly:
 ```js
 // single 1's (100pts)
 while (dice[0].count > 0) {
+    player[turn] += 100;
     score += 100;
     // add "+" if score was calculated, else only add score
     if (scoreFlag > 0) {
-        document.getElementById("score-calculator").innerHTML += " + 100";
+        byId("score-calculator").innerHTML += " + 100";
     }
     else {
-        document.getElementById("score-calculator").innerHTML += "100";
+        byId("score-calculator").innerHTML += "100";
         scoreFlag++; // flag to indicate score calculated
     }
     dice[0].count--;
 }
 ```
 
-
 ## Questions
 1. Is there a way to solve this problem dynamically? Would this be a good idea in the first place?
 2. Can the problem be solved in a faster time than O(6)?
-3. Are there shortcuts that can be made in my JavaScript implementation?
-
-## Assumptions Made
-- Each face of the die has an equal chance of being rolled
-- The highscore resets once the user refreshes the page
-- There is only one player per game
+3. What shortcuts that can be made in my JavaScript implementation?
+4. What changes could be made to the webpage for better usability?
 
