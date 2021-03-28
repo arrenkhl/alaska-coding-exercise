@@ -19,19 +19,13 @@ for (let i = 0; i < 6; i++) {
 }
 
 var roll = [];
-var player = [0,0];
-var turn = 1;
-var byId = function(id) { return document.getElementById(id); };
-byId("player0").style.color = "#e3e6eb";
+var highScore = 0;
 
 function rollDice()
 {
-    turn = 1 - turn;
-    byId("score-calculator").innerHTML = ""; // reset score calculator text
-    byId("player" + (1-turn)).style.color = "#e3e6eb";
-    byId("player" + turn).style.color = "#54585c";
-    var scoreFlag = 0;
+    document.getElementById("score-calculator").innerHTML = ""; // reset score calculator text
     var score = 0;
+    var scoreFlag = 0;
 
     // generate five dice rolls randomly
     for (let i = 0; i < 5; i++) {
@@ -40,8 +34,8 @@ function rollDice()
         the picture and number correponding to each die.
         */
         roll[i] = Math.floor(Math.random() * 6) + 1;
-        byId("die"+i).src = "assets/die" + roll[i] + ".png";
-        byId("p"+i).innerHTML = roll[i];
+        document.getElementById("die"+i).src = "assets/die" + roll[i] + ".png";
+        document.getElementById("p"+i).innerHTML = roll[i];
     }
 
     // counts number of die occurences in roll array
@@ -65,29 +59,26 @@ function rollDice()
         if (dice[i].count >= 3) {
             dice[i].count -= 3;
             if (dice[i].value == 1) {
-                player[turn] += dice[i].value * 1000;
                 score += dice[i].value * 1000;
             }
             else {
-                player[turn] += dice[i].value * 100;
                 score += dice[i].value * 100;
             }
             // add triple score to the score calculation text
-            byId("score-calculator").innerHTML = score;
+            document.getElementById("score-calculator").innerHTML = score;
             scoreFlag++; // flag to indicate score calculated
         }
     }
 
     // single 1's (100pts)
     while (dice[0].count > 0) {
-        player[turn] += 100;
         score += 100;
         // add "+" if score was calculated, else only add score
         if (scoreFlag > 0) {
-            byId("score-calculator").innerHTML += " + 100";
+            document.getElementById("score-calculator").innerHTML += " + 100";
         }
         else {
-            byId("score-calculator").innerHTML += "100";
+            document.getElementById("score-calculator").innerHTML += "100";
             scoreFlag++; // flag to indicate score calculated
         }
         dice[0].count--;
@@ -95,14 +86,13 @@ function rollDice()
 
     // single 5's (50pts)
     while (dice[4].count > 0) {
-        player[turn] += 50;
         score += 50;
         // add "+" if score was calculated, else only add score
         if (scoreFlag > 0) {
-            byId("score-calculator").innerHTML += " + 50";
+            document.getElementById("score-calculator").innerHTML += " + 50";
         }
         else {
-            byId("score-calculator").innerHTML += "50";
+            document.getElementById("score-calculator").innerHTML += "50";
             scoreFlag++; // flag to indicate score calculated
         }
         dice[4].count--;
@@ -110,49 +100,22 @@ function rollDice()
 
     // if score was calculated, add "="
     if (scoreFlag > 0) {
-        byId("score-calculator").innerHTML += " =";
+        document.getElementById("score-calculator").innerHTML += " =";
     }
 
     // updates the score on webpage
-    byId("score-value").innerHTML = score; 
+    document.getElementById("score-value").innerHTML = score; 
 
-    $('.player'+turn+'-blink').fadeOut(200); // blinks when adding to score
-    $('.player'+turn+'-blink').fadeIn(200);
-    byId("player"+turn+"-value").innerHTML = player[turn];
-
-    // win condition
-    if (player[turn] >= 1000) {
-        byId("score").style.display = "none";
-        byId("roll-button").style.display = "none";
-        byId("win-display").style.display = "block";
-        byId("player-win").innerHTML = "player " + (turn+1) + " wins!";
-        byId("player" + (1-turn)).style.color = "#54585c";
+    // updates the high score when applicable
+    if (score > highScore) {
+        highScore = score;
+        $('.blink').fadeOut(200); // blinks the new high score
+        $('.blink').fadeIn(200);
+        document.getElementById("highscore-value").innerHTML = highScore;
     }
 
     // reset die counts for the next roll
     for (let i = 0; i < 6; i++) {
         dice[i].count = 0;
-    }
-}
-
-function playAgain()
-{
-    byId("player0-value").innerHTML = 0;
-    byId("player1-value").innerHTML = 0;
-    byId("score-value").innerHTML = 0;
-    byId("score-calculator").innerHTML = "";
-    byId("player-win").innerHTML = "";
-    byId("score").style.display = "block";
-    byId("roll-button").style.display = "block";
-    byId("win-display").style.display = "none";
-
-    player[0] = 0;
-    player[1] = 0;
-    byId("player" + (1-turn)).style.color = "#e3e6eb";
-    byId("player" + turn).style.color = "#54585c";
-
-    for (let i = 0; i < 5; i++) {
-        byId("die"+i).src = "assets/die0.png";
-        byId("p"+i).innerHTML = 0;
     }
 }

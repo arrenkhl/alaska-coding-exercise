@@ -12,25 +12,19 @@
 
    <body>
       <div class="top">
-         <h1>greed_kata_v2</h1>
+         <h1>greed_kata</h1>
          <p>made by <a onclick="window.open('https://www.linkedin.com/in/arrenleung/')" class="linkedin">arren leung</a></p>
          <button onclick="window.open('http://brendan.enrick.com/file.axd?file=2014%2F1%2Fgreed%20kata.pdf')">instructions</button>
          <button onclick="window.open('https://github.com/arrenkhl/alaska-coding-exercise')">repository</button>
       </div>
 
-      <div class="player-scores">
-         <div class="player0">
-            <p id="player0">player 1:</p>
-            <span class="player0-blink"><button id="player0-value">0</button></span>
-         </div>
-         <div class="player1">
-            <p id="player1">player 2:</p>
-            <span class="player1-blink"><button id="player1-value">0</button></span>
-         </div>
+      <div class="highscore">
+         <p>highscore: </p>
+         <span class="blink"><button id="highscore-value">0</button></span>
       </div>
 
       <!-- Container to hold die images and numbers -->
-      <div class="container" id="dice">
+      <div class="container">
          <div class="die0">
             <img src="assets/die0.png" alt="die" id="die0">
             <p id="p0">0</p>
@@ -53,18 +47,13 @@
          </div>
       </div>
 
-      <div class="win-display" id="win-display">
-         <h1 id="player-win"></h1>
-         <button onclick=playAgain()>play again</button>
-      </div>
-
-      <div class="score" id="score">
+      <div class="score">
          <p>score: </p>
          <p id="score-calculator"></p>
          <p id="score-value">0</p>
       </div>
 
-      <div class="roll-button" id="roll-button">
+      <div class="roll-button">
          <button onclick=rollDice()>roll!</button>
       </div>
 

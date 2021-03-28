@@ -9,7 +9,7 @@ html,body {
 }
 
 p {
-   font-size: 20px;
+   font-size: 18px;
    color: #54585c;
 }
 
@@ -55,14 +55,12 @@ p {
    background-color: #95dbd3;
 }
 
-.player-scores {
+.highscore {
    text-align: center;
-   display: grid;
-   grid-template-columns: auto 15% 15% auto;
-   margin: 20px 0px 30px 0px;
+   margin: 40px 0px;
 }
 
-.player-scores button {
+.highscore button {
    font-size: 20px;
    display: inline-block;
    border: none;
@@ -71,14 +69,6 @@ p {
    font-family: inherit;
    color: #54585c;
    background-color: #95dbd3;
-}
-
-.player-scores .player0 {
-   grid-column: 2 / 3;
-}
-
-.player-scores .player1 {
-   grid-column: 3 / 4;
 }
 
 /* ------Uses grid display for the dice------ */
@@ -90,7 +80,7 @@ p {
 }
 
 .container img {
-   width: 55%;
+   width: 65%;
 }
 /* ------------------------------------------ */
 
@@ -110,30 +100,18 @@ p {
    color: #95dbd3;
 }
 
-.win-display {
-   text-align: center;
-   display: none;
-}
-
-.win-display h1 {
-   margin-bottom: 30px;
-   font-size: 30px;
-   color: #95dbd3;
-}
-
 .roll-button {
    text-align: center;
    margin-top: 20px;
 }
 
-.roll-button button, .win-display button {
+.roll-button button {
    font-size: 20px;
    display: inline-block;
    border: none;
    border-radius: 20px;
    outline: 0;
    padding: 10px 25px;
-   margin-bottom: 30px;
    cursor: pointer;
    font-family: inherit;
    color: #e3e6eb;
@@ -141,30 +119,7 @@ p {
    transition: .25s;
 }
 
-.roll-button button:hover, .win-display button:hover {
+.roll-button button:hover {
    color: #54585c;
    background-color: #95dbd3;
-}
-
-@media only screen and (max-width: 768px)
-{
-   .top h1 {
-      font-size: 65px;
-   }
-
-   p {
-      font-size: 25px;
-   }
-
-   .player-scores {
-      grid-template-columns: auto 30% 30% auto;
-   }
-
-   button {
-      font-size: 25px;
-   }
-
-   .container img {
-      width: 80%;
-   }
 }
