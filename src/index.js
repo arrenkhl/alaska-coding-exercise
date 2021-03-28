@@ -27,11 +27,13 @@ byId("player0").style.color = "#e3e6eb";
 function rollDice()
 {
     turn = 1 - turn;
-    byId("score-calculator").innerHTML = ""; // reset score calculator text
-    byId("player" + (1-turn)).style.color = "#e3e6eb";
-    byId("player" + turn).style.color = "#54585c";
     var scoreFlag = 0;
     var score = 0;
+    byId("score-calculator").innerHTML = ""; // reset score calculator text
+    
+    // change color depending on player turn
+    byId("player" + (1-turn)).style.color = "#e3e6eb";
+    byId("player" + turn).style.color = "#54585c";
 
     // generate five dice rolls randomly
     for (let i = 0; i < 5; i++) {
@@ -118,12 +120,16 @@ function rollDice()
 
     $('.player'+turn+'-blink').fadeOut(200); // blinks when adding to score
     $('.player'+turn+'-blink').fadeIn(200);
-    byId("player"+turn+"-value").innerHTML = player[turn];
+    byId("player"+turn+"-value").innerHTML = player[turn]; // update player's total score
 
     // win condition
-    if (player[turn] >= 1000) {
+    if (player[turn] >= 1000)
+    {
+        // hide roll button and score text
         byId("score").style.display = "none";
         byId("roll-button").style.display = "none";
+        
+        // display winner and play again button
         byId("win-display").style.display = "block";
         byId("player-win").innerHTML = "player " + (turn+1) + " wins!";
         byId("player" + (1-turn)).style.color = "#54585c";
@@ -137,6 +143,7 @@ function rollDice()
 
 function playAgain()
 {
+    // reset images, text, and scores for new game
     byId("player0-value").innerHTML = 0;
     byId("player1-value").innerHTML = 0;
     byId("score-value").innerHTML = 0;
